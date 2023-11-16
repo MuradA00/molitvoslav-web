@@ -44,6 +44,8 @@ function detectLanguage() {
   }
 }
 
+detectLanguage();
+
 if (AOS) {
   AOS.init({
     once: true
