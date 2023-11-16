@@ -1,15 +1,9 @@
+// Функция для определения языка
 function detectLanguage() {
-  let languageOption = sessionStorage.getItem('languageOption');
-
-  // Если язык еще не был определен
-  if (!languageOption) {
-    languageOption = navigator.language;
-    sessionStorage.setItem('languageOption', languageOption); // Сохраняем в sessionStorage
-  }
+  const languageOption = navigator.language;
 
   console.log(languageOption);
 
-  // Проверяем язык и перенаправляем пользователя
   switch(languageOption) {
     case 'ru-RU': {
       if (window.location.pathname !== '/index-ru.html') {
@@ -42,10 +36,18 @@ function detectLanguage() {
       break;
     }
   }
+
+  // Устанавливаем флаг в localStorage, чтобы знать, что проверка была выполнена
+  localStorage.setItem('languageChecked', 'true');
 }
 
-detectLanguage();
+// Проверяем, была ли уже выполнена проверка языка
+const languageChecked = localStorage.getItem('languageChecked');
 
+// Если проверка языка еще не была выполнена, выполняем её
+if (!languageChecked) {
+  window.addEventListener('DOMContentLoaded', detectLanguage);
+}
 if (AOS) {
   AOS.init({
     once: true
