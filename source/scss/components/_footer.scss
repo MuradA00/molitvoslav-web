@@ -1,0 +1,30 @@
+.footer {
+  background-color: rgba(var(--cl-dark), 1);
+  color: rgba(var(--cl-w), 1);
+  padding: clamp(2.75rem, 3.375vw, 3.375rem) 0;
+  &-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-link {
+    text-decoration: underline;
+  }
+  &-rights {
+    line-height: 180%;
+    font-size: var(--t-xs);
+    &__name {
+      font-size: var(--t-md);
+    }
+  }
+}
+
+.socials {
+  @include dfc;
+  grid-gap: .5rem;
+  &-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    @include dfc;
+  }
+}

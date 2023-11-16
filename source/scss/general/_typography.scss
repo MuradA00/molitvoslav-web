@@ -1,0 +1,9 @@
+.title-g {
+  --cl: var(--cl-w);
+  font-size: clamp(1.75rem, 3rem, 3vw);
+  font-weight: 600;
+  color: rgba(var(--cl), 1);
+  &--dark {
+    --cl: var(--cl-dark);
+  }
+}

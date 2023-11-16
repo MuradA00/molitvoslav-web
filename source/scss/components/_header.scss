@@ -1,0 +1,103 @@
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  &-body {
+    padding: 1.875rem 0 1rem 0;
+    border-bottom: 1px solid rgba(var(--cl-w), .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-lang {
+    position: relative;
+    &__hidden {
+      position: absolute;
+      padding-top: 1rem;
+      z-index: 4;
+      left: 50%;
+      transform: translateX(-50%) scale(.95);
+      top: 100%;
+      opacity: 0;
+      transition: all 300ms ease;
+      pointer-events: none;
+    }
+    &__list {
+      background-color: rgba(var(--cl-w), 1);
+      border-radius: 2px;
+      &-link {
+        line-height: 180%;
+        min-height: 40px;
+        @include dfc;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0 14px;
+        font-size: var(--t-base);
+        border-bottom: 1px solid rgba(12, 12, 12, 0.10);
+        transition: all 300ms ease;
+        &:hover {
+          background-color: rgba(12, 12, 12, 0.10);
+        }
+      }
+    }
+    &__selected {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      border: 1px solid rgba(var(--cl-w), 1);
+      @include dfc;
+      text-align: center;
+      cursor: pointer;
+      transition: all 300ms ease;
+      &-text {
+        font-size: var(--t-xs);
+        font-weight: 600;
+        color: rgba(var(--cl-w), 1);
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      .header-lang {
+        &__selected {
+          background-color: rgba(var(--cl-w), .1);
+        }
+        &__hidden {
+          transform: translateX(-50%) scale(1);
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+  }
+  &-logo {
+    img, svg {
+      max-width: 280px;
+    }
+  }
+}
+
+@include tablet {
+  .header {
+    &-logo {
+      img, svg {
+        max-width: 200px;
+      }
+    }
+    &-body {
+      padding: 1.25rem 0 1rem 0;
+    }
+  }
+}
+
+@include mobile {
+  .header {
+    &-logo {
+      img, svg {
+        max-width: 162px;
+      }
+    }
+  }
+}
